@@ -1,27 +1,10 @@
 'use client';
 
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 
 /** The Home page. */
 const Home = () => (
   <main>
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
-      <Container>
-        <Navbar.Brand href="#">
-          <Image src="/I3.jpg" alt="Manoa Bird Watching" width={150} height={50} className="logo" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbar-nav" />
-        <Navbar.Collapse id="navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/add">Report Sighting</Nav.Link>
-            <Nav.Link href="/list">List Sightings</Nav.Link>
-            <Nav.Link href="/auth/signin">Login</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-
     <header className="hero text-center text-white d-flex flex-column justify-content-center align-items-center">
       <div className="container">
         <h1>Welcome to Manoa Bird Watch</h1>
