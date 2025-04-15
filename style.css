@@ -1,17 +1,3 @@
-html,
-body {
-  --bs-light-rgb: 236, 236, 236;
-  box-sizing: border-box;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
-.wrapper {
-  box-sizing: border-box;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
 /* Global body style */
 body {
     margin: 0;
@@ -22,14 +8,14 @@ body {
 
 /* Logo size */
 .logo {
-    height: 40px;
-    width: auto;
+    height: 100px;
+    width: 150px;
 }
 
 /* Hero section styling */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("../../public/I1.png") center/cover no-repeat;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("Image/I1.png") center/cover no-repeat;
     padding-top: 100px;
 }
 

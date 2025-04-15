@@ -27,7 +27,7 @@ const ListPage = async () => {
       <Container id="list" fluid className="py-3">
         <Row>
           <Col>
-            <h1>Stuff</h1>
+            <h1>Your birds</h1>
             <Table striped bordered hover>
               <thead>
                 <tr>
