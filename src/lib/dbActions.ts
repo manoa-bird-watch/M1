@@ -83,11 +83,11 @@ export async function createUser(credentials: { name: string; email: string; pas
  * Changes the password of an existing user in the database.
  * @param credentials, an object with the following properties: email, password.
  */
-export async function changePassword(credentials: { name: string, email: string; password: string }) {
+export async function changePassword(credentials: { email: string; password: string }) {
   // console.log(`changePassword data: ${JSON.stringify(credentials, null, 2)}`);
   const password = await hash(credentials.password, 10);
   await prisma.user.update({
-    where: { name: credentials.name, email: credentials.email },
+    where: { email: credentials.email },
     data: {
       password,
     },
