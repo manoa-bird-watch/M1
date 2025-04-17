@@ -11,7 +11,7 @@ import { prisma } from './prisma';
  */
 export async function addBird(
   bird: {
-    imagepath: string; name: string; sciname: string; time: string; user: string; description: string; owner: string },
+    imagepath: string; name: string; sciname: string; time: string; user: string; description: string; },
 ) {
   await prisma.bird.create({
     data: {
@@ -21,7 +21,6 @@ export async function addBird(
       time: bird.time,
       user: bird.user,
       description: bird.description,
-      owner: bird.owner,
     },
   });
   redirect('/list');
@@ -42,7 +41,6 @@ export async function editBird(bird: Bird) {
       time: bird.time,
       user: bird.user,
       description: bird.description,
-      owner: bird.owner,
     },
   });
   redirect('/list');
