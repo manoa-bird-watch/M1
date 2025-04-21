@@ -1,13 +1,39 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN" },
-    { "email": "john@foo.com", "password": "changeme" }
+    { "email": "admin@foo.com", "username": "ADMIN", "password": "changeme", "role": "ADMIN" },
+    { "email": "john@foo.com", "username": "John", "password": "changeme" }
   ],
 
   "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ]
+  { "id": 0, "imagepath": "", "name": "Manu Nunu - Rock Pigeon", "sciname": "Columba Livia", "description": "Originally from Europe and North Africa. Gray-blue with iridescent neck feathers. Often seen in flocks on sidewalks and rooftops." },
+  { "id": 1, "imagepath": "", "name": "Zebra Dove", "sciname": "Geopelia striata", "description": "Native to Southeast Asia. Small and gray with zebra-like stripes. Commonly seen walking on lawns and cooing softly." },
+  { "id": 2, "imagepath": "", "name": "Manu ʻEleʻele - Common Myna", "sciname": "Acridotheres tristis", "description": "Introduced from India. Brown with a yellow eye patch and black head. Loud and social, often walking in pairs or groups." },
+  { "id": 3, "imagepath": "", "name": "Japanese White-eye - Mejiro", "sciname": "Zosterops japonicus", "description": "Native to East Asia. Small green bird with a white eye ring. Active forager in trees, feeding on nectar and insects." },
+  { "id": 4, "imagepath": "", "name": "Red-crested Cardinal", "sciname": "Paroaria coronata", "description": "Native to South America. Gray body with a vivid red head. Seen foraging on the ground and perched on fences." },
+  { "id": 5, "imagepath": "", "name": "Kōlea - Pacific Golden-Plover", "sciname": "Pluvialis fulva", "description": "Migrates from Alaska. Brown and gold speckled with a short bill. Seen alone on grassy lawns during fall and winter." },
+  { "id": 6, "imagepath": "", "name": "House Sparrow", "sciname": "Passer domesticus", "description": "Introduced from Europe. Small brown bird with streaky back. Common around buildings and eateries, often in flocks." },
+  { "id": 7, "imagepath": "", "name": "Ehako - Spotted Dove", "sciname": "Spilopelia chinensis", "description": "Native to Asia. Larger dove with a spotted collar and gray-brown plumage. Frequently heard cooing in trees or on wires." },
+  { "id": 8, "imagepath": "", "name": "Common Waxbill", "sciname": "Estrilda astrild", "description": "Native to sub-Saharan Africa. Tiny finch with gray body, red eye stripe, and red beak. Moves in flocks through tall grass." },
+  { "id": 9, "imagepath": "", "name": "White-rumped Shama", "sciname": "Copsychus malabaricus", "description": "Introduced from Asia. Glossy black with white rump and long tail. Known for its melodious song, prefers forested areas." },
+  { "id": 10, "imagepath": "", "name": "ʻApapane", "sciname": "Himatione sanguinea", "description": "Native to Hawaiʻi. Bright red with black wings and tail. Found in native forests, especially near ʻōhiʻa blossoms." },
+  { "id": 11, "imagepath": "", "name": "Red-vented Bulbul", "sciname": "Pycnonotus cafer", "description": "Introduced from India. Brownish bird with a black crest and red vent. Active in gardens and urban forests." },
+  { "id": 12, "imagepath": "", "name": "Rose-ringed Parakeet", "sciname": "Psittacula krameri", "description": "Native to Africa and South Asia. Bright green with a long tail and rose-colored neck ring. Seen in noisy flocks near tall trees." },
+  { "id": 13, "imagepath": "", "name": "Chestnut Munia", "sciname": "Lonchura atricapilla", "description": "Native to Southeast Asia. Chestnut body with black head and stubby beak. Forages in flocks in grassy areas." },
+  { "id": 14, "imagepath": "", "name": "Manu o Kū - White Tern", "sciname": "Gygis alba", "description": "Native seabird. Pure white with large black eyes and slender wings. Lays eggs on bare tree branches in urban Honolulu." },
+  { "id": 15, "imagepath": "", "name": "Java Sparrow", "sciname": "Padda oryzivora", "description": "Native to Java and Bali. Plump with gray body, white cheeks, and pink beak. Seen in flocks feeding on grass seeds." },
+  { "id": 16, "imagepath": "", "name": "Warbling White-eye", "sciname": "Zosterops japonicus", "description": "Introduced from Japan. Tiny olive-green bird with white eye ring. Quickly flits through trees in search of nectar and insects." },
+  { "id": 17, "imagepath": "", "name": "Western Cattle Egret", "sciname": "Bubulcus ibis", "description": "Native to Africa and Asia. White body, yellow bill and legs. Seen in fields, often near cattle or lawn mowers." },
+  { "id": 18, "imagepath": "", "name": "Saffron Finch", "sciname": "Sicalis flaveola", "description": "Native to South America. Bright yellow with orange on the head. Forages in open grassy areas, often in pairs." },
+  { "id": 19, "imagepath": "", "name": "Moa - Chicken", "sciname": "Gallus gallus domesticus", "description": "Domesticated and feral worldwide. Varied in color with red comb. Roams freely, scratching the ground with chicks nearby." },
+  { "id": 20, "imagepath": "", "name": "Yellow-fronted Canary", "sciname": "Crithagra mozambica", "description": "Native to Africa. Yellow body with greenish wings and streaks. Sings brightly from shrubs and open areas." },
+  { "id": 21, "imagepath": "", "name": "Northern Cardinal", "sciname": "Cardinalis cardinalis", "description": "Introduced from North America. Males are red, females brown with red highlights. Sings whistled phrases from trees." },
+  { "id": 22, "imagepath": "", "name": "Red-whiskered Bulbul", "sciname": "Pycnonotus jocosus", "description": "Native to Asia. Black crest, white cheeks, and red patch behind the eye. Found in shrubby areas, calling in pairs." },
+  { "id": 23, "imagepath": "", "name": "Koloa Maoli - Hawaiian Duck", "sciname": "Anas wyvilliana", "description": "Endemic to Hawaiʻi. Brown mottled duck similar in appearance to female mallards. Often found in streams, wetlands, and taro patches; shy and quiet."},
+  { "id": 24, "imagepath": "", "name": "Mallard", "sciname": "Anas platyrhynchos", "description": "Introduced from North America. Males have a green head and yellow bill; females are brown with orange bills. Common in ponds and sometimes hybridize with Hawaiian ducks."},
+  { "id": 25, "imagepath": "", "name": "Black-necked Stilt - Aeʻo", "sciname": "Himantopus mexicanus knudseni", "description": "Endemic subspecies in Hawaiʻi. Tall, slender wader with long pink legs, black upperparts, and white underparts. Found in shallow wetlands, often seen foraging in groups."}
+
+]
+
 }
+
+

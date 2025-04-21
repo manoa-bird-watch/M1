@@ -8,6 +8,7 @@ import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
 import { createUser } from '@/lib/dbActions';
 
 type SignUpForm = {
+  name: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -17,6 +18,10 @@ type SignUpForm = {
 /** The sign up page. */
 const SignUp = () => {
   const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .required('Name is required')
+      .min(2, 'Name must be at least 2 characters')
+      .max(30, 'Name is too long'),
     email: Yup.string().required('Email is required').email('Email is invalid'),
     password: Yup.string()
       .required('Password is required')
@@ -53,6 +58,13 @@ const SignUp = () => {
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                   <Form.Group className="form-group">
+                    <Form.Label>Name</Form.Label>
+                    <input
+                      type="text"
+                      {...register('name')}
+                      className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    />
+                    <div className="invalid-feedback">{errors.name?.message}</div>
                     <Form.Label>Email</Form.Label>
                     <input
                       type="text"

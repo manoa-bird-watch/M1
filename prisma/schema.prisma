@@ -24,22 +24,25 @@ enum Role {
 
 model User {
   id       Int    @id @default(autoincrement())
+  name     String @default("User")
   email    String @unique
   password String
   role     Role   @default(USER)
 }
 
-enum Condition {
-  excellent
-  good
-  fair
-  poor
+model Bird {
+  id            Int       @id @default(autoincrement())
+  imagepath     String?
+  name          String
+  sciname       String
+  time          String
+  user          String
+  description   String
 }
 
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition @default(good)
+model Comment {
+  id        Int      @id @default(autoincrement())
+  note      String
   owner     String
+  createdAt DateTime @default(now())
 }

@@ -1,62 +1,58 @@
 'use server';
 
-import { Stuff, Condition } from '@prisma/client';
+import { Bird } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 
 /**
- * Adds a new stuff to the database.
- * @param stuff, an object with the following properties: name, quantity, owner, condition.
+ * Adds a new Bird to the database.
+ * @param bird, an object with the following properties: name, sciname, time, user, description
  */
-export async function addStuff(stuff: { name: string; quantity: number; owner: string; condition: string }) {
-  // console.log(`addStuff data: ${JSON.stringify(stuff, null, 2)}`);
-  let condition: Condition = 'good';
-  if (stuff.condition === 'poor') {
-    condition = 'poor';
-  } else if (stuff.condition === 'excellent') {
-    condition = 'excellent';
-  } else {
-    condition = 'fair';
-  }
-  await prisma.stuff.create({
+export async function addBird(
+  bird: {
+    imagepath: string; name: string; sciname: string; time: string; user: string; description: string; },
+) {
+  await prisma.bird.create({
     data: {
-      name: stuff.name,
-      quantity: stuff.quantity,
-      owner: stuff.owner,
-      condition,
+      imagepath: bird.imagepath,
+      name: bird.name,
+      sciname: bird.sciname,
+      time: bird.time,
+      user: bird.user,
+      description: bird.description,
     },
   });
-  // After adding, redirect to the list page
   redirect('/list');
 }
 
 /**
- * Edits an existing stuff in the database.
- * @param stuff, an object with the following properties: id, name, quantity, owner, condition.
+ * Edits an existing Bird in the database.
+ * @param bird, an object with the following properties: name, sciname, time, user, description
  */
-export async function editStuff(stuff: Stuff) {
-  // console.log(`editStuff data: ${JSON.stringify(stuff, null, 2)}`);
-  await prisma.stuff.update({
-    where: { id: stuff.id },
+export async function editBird(bird: Bird) {
+  await prisma.bird.update({
+    where: { id: bird.id },
     data: {
-      name: stuff.name,
-      quantity: stuff.quantity,
-      owner: stuff.owner,
-      condition: stuff.condition,
+      id: bird.id,
+      imagepath: bird.imagepath,
+      name: bird.name,
+      sciname: bird.sciname,
+      time: bird.time,
+      user: bird.user,
+      description: bird.description,
     },
   });
-  // After updating, redirect to the list page
   redirect('/list');
 }
 
 /**
- * Deletes an existing stuff from the database.
- * @param id, the id of the stuff to delete.
+ * Deletes an existing Bird from the database.
+ * @param id, the id of the Bird to delete.
  */
-export async function deleteStuff(id: number) {
+export async function deleteBird(id: number) {
   // console.log(`deleteStuff id: ${id}`);
-  await prisma.stuff.delete({
+  await prisma.bird.delete({
     where: { id },
   });
   // After deleting, redirect to the list page
@@ -65,13 +61,14 @@ export async function deleteStuff(id: number) {
 
 /**
  * Creates a new user in the database.
- * @param credentials, an object with the following properties: email, password.
+ * @param credentials, an object with the following properties: name, email, password.
  */
-export async function createUser(credentials: { email: string; password: string }) {
+export async function createUser(credentials: { name: string; email: string; password: string }) {
   // console.log(`createUser data: ${JSON.stringify(credentials, null, 2)}`);
   const password = await hash(credentials.password, 10);
   await prisma.user.create({
     data: {
+      name: credentials.name,
       email: credentials.email,
       password,
     },
