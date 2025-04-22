@@ -35,8 +35,16 @@ model Bird {
   imagepath     String?
   name          String
   sciname       String
+  description   String
+}
+
+model Sighting {
+  id            Int       @id @default(autoincrement())
+  imagepath     String?
+  name          String
+  sciname       String
   time          String
-  user          String
+  userid        Int
   description   String
 }
 
