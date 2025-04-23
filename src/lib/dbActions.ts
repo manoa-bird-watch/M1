@@ -1,6 +1,6 @@
 'use server';
 
-import { Bird, Stuff, Condition } from '@prisma/client';
+import { Bird, Stuff, Condition, Sighting } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
@@ -76,8 +76,6 @@ export async function addBird(
       imagepath: bird.imagepath,
       name: bird.name,
       sciname: bird.sciname,
-      time: bird.time,
-      user: bird.user,
       description: bird.description,
     },
   });
@@ -96,8 +94,6 @@ export async function editBird(bird: Bird) {
       imagepath: bird.imagepath,
       name: bird.name,
       sciname: bird.sciname,
-      time: bird.time,
-      user: bird.user,
       description: bird.description,
     },
   });
@@ -111,6 +107,60 @@ export async function editBird(bird: Bird) {
 export async function deleteBird(id: number) {
   // console.log(`deleteStuff id: ${id}`);
   await prisma.bird.delete({
+    where: { id },
+  });
+  // After deleting, redirect to the list page
+  redirect('/list');
+}
+
+/**
+ * Adds a new Sighting to the database.
+ * @param bird, an object with the following properties: name, sciname, time, user, description
+ */
+export async function addSighting(
+  sighting: {
+    imagepath: string; name: string; sciname: string; time: string; userid: number; description: string; },
+) {
+  await prisma.sighting.create({
+    data: {
+      imagepath: sighting.imagepath,
+      name: sighting.name,
+      sciname: sighting.sciname,
+      time: sighting.time,
+      userid: sighting.userid,
+      description: sighting.description,
+    },
+  });
+  redirect('/list');
+}
+
+/**
+ * Edits an existing Sighting in the database.
+ * @param sighting, an object with the following properties: name, sciname, time, user, description
+ */
+export async function editSighting(sighting: Sighting) {
+  await prisma.sighting.update({
+    where: { id: sighting.id },
+    data: {
+      id: sighting.id,
+      imagepath: sighting.imagepath,
+      name: sighting.name,
+      sciname: sighting.sciname,
+      time: sighting.time,
+      userid: sighting.userid,
+      description: sighting.description,
+    },
+  });
+  redirect('/list');
+}
+
+/**
+ * Deletes an existing Sighting from the database.
+ * @param id, the id of the Bird to delete.
+ */
+export async function deleteSighting(id: number) {
+  // console.log(`deleteStuff id: ${id}`);
+  await prisma.sighting.delete({
     where: { id },
   });
   // After deleting, redirect to the list page
