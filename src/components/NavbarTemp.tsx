@@ -20,6 +20,10 @@ const NavbarTemp: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
+            {/* All Birds Link */}
+            <Nav.Link id="all-birds-nav" href="/birds-of-manoa" key="all-birds" active={pathName === '/birds-of-manoa'}>
+              All Birds
+            </Nav.Link>
             {currentUser
               ? [
                   <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
