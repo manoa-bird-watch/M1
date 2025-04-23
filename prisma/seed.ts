@@ -20,6 +20,20 @@ async function main() {
       },
     });
   });
+
+  config.defaultData.forEach(async (bird, index) => {
+    console.log(`  Adding bird: ${bird.name}`);
+    await prisma.bird.upsert({
+      where: { id: index + 1 },
+      update: {},
+      create: {
+        imagepath: bird.imagepath,
+        name: bird.name,
+        sciname: bird.sciname,
+        description: bird.description,
+      },
+    });
+  });
 }
 main()
   .then(() => prisma.$disconnect())
