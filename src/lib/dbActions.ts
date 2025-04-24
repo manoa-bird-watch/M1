@@ -119,7 +119,8 @@ export async function deleteBird(id: number) {
  */
 export async function addSighting(
   sighting: {
-    imagepath: string; name: string; sciname: string; time: string; userid: number; description: string; },
+    imagepath: string;
+    name: string; sciname: string; time: string; userid: number; description: string; owner: string; },
 ) {
   await prisma.sighting.create({
     data: {
@@ -129,6 +130,7 @@ export async function addSighting(
       time: sighting.time,
       userid: sighting.userid,
       description: sighting.description,
+      owner: sighting.owner,
     },
   });
   redirect('/list');
