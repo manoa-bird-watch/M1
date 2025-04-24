@@ -22,9 +22,12 @@ const Navigation: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-start">
+            <Nav.Link id="all-birds-nav" href="/birds-of-manoa" key="all-birds" active={pathName === '/birds-of-manoa'}>
+              All Birds
+            </Nav.Link>
             {currentUser
               ? [
-                  <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
+                  <Nav.Link id="list-stuff-nav" href="/list-birds" key="list" active={pathName === '/list-birds'}>
                     List Birds
                   </Nav.Link>,
                   <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
