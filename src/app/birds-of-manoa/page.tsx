@@ -13,16 +13,14 @@ export default async function BirdsOfManoaPage() {
         <div className="row">
           { /* maps over the birds array and creates a card for each bird */ }
           {birds.map((bird) => {
-            const imgSrc =
-              bird.imagepath && (bird.imagepath.endsWith('.jpg') || bird.imagepath.endsWith('.png'))
-                ? bird.imagepath
-                : bird.imagepath + '.jpg'; // default fallback
-
+            const imgSrc = bird.imagepath && (bird.imagepath.endsWith('.jpg') || bird.imagepath.endsWith('.png'))
+              ? bird.imagepath
+              : bird.imagepath; // default fallback
             return (
               <div key={bird.id} className="col-md-4 mb-4">
                 <div className="card h-100">
                   <Image
-                    src={imgSrc}
+                    src={imgSrc ?? '/bird-00.jpg'}
                     alt={bird.name}
                     width={400}
                     height={250}
