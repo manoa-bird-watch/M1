@@ -37,7 +37,7 @@ const Navigation: React.FC = () => {
               : ''}
             <Nav.Link
               id="all-birds-nav"
-              href="/birds-of-manoa"
+              href="/list-all-sightings"
               key="all-birds"
               active={pathName === '/list-all-sightings'}
             >
