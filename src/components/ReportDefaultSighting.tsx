@@ -12,6 +12,7 @@ import { addSighting } from '@/lib/dbActions';
 import LoadingSpinner from '@/components/LoadingSpinner';
 // eslint-disable-next-line import/extensions
 import { AddSightingSchema } from '@/lib/validationSchemas';
+import { useState } from 'react';
 import birdData from '../../config/settings.development.json';
 
 const onSubmit = async (
@@ -25,6 +26,8 @@ const onSubmit = async (
 
 const ReportDefaultSighting: React.FC = () => {
   const { data: session, status } = useSession();
+  const [selectedBird, setSelectedBird] = useState<{
+    name: string; sciname: string; imagepath: string; description: string } | null>(null);
   // console.log('AddStuffForm', status, session);
   const currentUser = session?.user?.email || '';
   const {
@@ -36,6 +39,7 @@ const ReportDefaultSighting: React.FC = () => {
   } = useForm({
     resolver: yupResolver(AddSightingSchema),
   });
+
   if (status === 'loading') {
     return <LoadingSpinner />;
   }
@@ -44,13 +48,20 @@ const ReportDefaultSighting: React.FC = () => {
   }
 
   const handleBirdSelection = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedBird = birdData.defaultData.find((bird) => bird.name === event.target.value);
-    if (selectedBird) {
-      // Autofill form fields with selected bird data
-      setValue('name', selectedBird.name);
-      setValue('sciname', selectedBird.sciname);
-      setValue('imagepath', `/public/${selectedBird.imagepath}`); // Assuming images are in the public folder
-      setValue('description', selectedBird.description);
+    if (!birdData?.defaultData) {
+      console.error('birdData.defaultData is undefined');
+      return;
+    }
+    const bird = birdData.defaultData.find((thisbird) => thisbird.name === event.target.value);
+    if (bird) {
+      console.log('Selected bird:', bird.name);
+      setValue('name', bird.name);
+      setValue('sciname', bird.sciname);
+      setValue('imagepath', `/public/${bird.imagepath}`);
+      setValue('description', bird.description);
+      setSelectedBird(bird);
+    } else {
+      setSelectedBird(null);
     }
   };
 
@@ -65,7 +76,7 @@ const ReportDefaultSighting: React.FC = () => {
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
 
-                <Form.Group>
+                <Form.Group className="mb-3">
                   <Form.Label>What did you see?</Form.Label>
                   <select
                     className="form-control"
@@ -80,21 +91,27 @@ const ReportDefaultSighting: React.FC = () => {
                   </select>
                 </Form.Group>
 
-                <Form.Group>
-                  <Form.Label>Selected Bird Preview</Form.Label>
-                  <div>
-                    {birdData.defaultData.map((bird) => (
-                      <div key={bird.name} className="d-flex align-items-center mb-2">
+                {selectedBird && (
+                  <>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Selected Bird</Form.Label>
+                      <div className="d-flex pt-3 pb-3 flex-column align-items-center">
                         <img
-                          src={`/public/${bird.imagepath}`}
-                          alt={bird.name}
-                          style={{ width: '50px', height: '50px', marginRight: '10px' }}
+                          src={selectedBird.imagepath}
+                          alt={selectedBird.name}
+                          style={{ width: '80%', height: '80%', marginRight: '10px' }}
                         />
-                        <span>{bird.name}</span>
+                        <strong>{selectedBird.name}</strong>
+                        <em className="text-muted">{selectedBird.sciname}</em>
                       </div>
-                    ))}
-                  </div>
-                </Form.Group>
+                    </Form.Group>
+
+                    <input type="hidden" {...register('name')} value={selectedBird.name} />
+                    <input type="hidden" {...register('sciname')} value={selectedBird.sciname} />
+                    <input type="hidden" {...register('imagepath')} value={selectedBird.imagepath} />
+                    <input type="hidden" {...register('description')} value={selectedBird.description} />
+                  </>
+                )}
 
                 <Form.Group>
                   <Form.Label>At what time?</Form.Label>
@@ -115,7 +132,14 @@ const ReportDefaultSighting: React.FC = () => {
                       </Button>
                     </Col>
                     <Col>
-                      <Button type="button" onClick={() => reset()} variant="warning" className="float-right">
+                      <Button
+                        type="button"
+                        onClick={() => {
+                          reset(); setSelectedBird(null);
+                        }}
+                        variant="warning"
+                        className="float-right"
+                      >
                         Reset
                       </Button>
                     </Col>
