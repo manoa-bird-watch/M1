@@ -31,7 +31,7 @@ const Navigation: React.FC = () => {
                     List Birds
                   </Nav.Link>,
                   <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
-                    Add Bird
+                    Report Sighting
                   </Nav.Link>,
                 ]
               : ''}
