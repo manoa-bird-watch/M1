@@ -31,11 +31,16 @@ const Navigation: React.FC = () => {
                     Report Sighting
                   </Nav.Link>,
                   <Nav.Link id="list-stuff-nav" href="/list-birds" key="list" active={pathName === '/list-birds'}>
-                  Your Sightings
-                </Nav.Link>,
+                    Your Sightings
+                  </Nav.Link>,
                 ]
               : ''}
-            <Nav.Link id="all-birds-nav" href="/birds-of-manoa" key="all-birds" active={pathName === '/list-all-sightings'}>
+            <Nav.Link
+              id="all-birds-nav"
+              href="/birds-of-manoa"
+              key="all-birds"
+              active={pathName === '/list-all-sightings'}
+            >
               All Sightings
             </Nav.Link>
             {currentUser && role === 'ADMIN' ? (

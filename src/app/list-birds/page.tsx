@@ -29,11 +29,15 @@ const ListBirds = async () => {
         <Container>
           <Row>
             <Col>
-              <h1 className="text-center">Sightings</h1>
+              <h1 className="text-center">All Sightings</h1>
               <Row xs={1} md={2} lg={3} className="g-4">
                 {sightings.map((sighting) => (
-                  <Col>
+                  <Col key={sighting.id}>
                     <SightingCard sighting={sighting} />
+                    { /* also includes who made the sighting */}
+                    <div className="mt-2 text-center small text-muted">
+                      {`Submitted by: ${sighting.owner}`}
+                    </div>
                   </Col>
                 ))}
               </Row>
