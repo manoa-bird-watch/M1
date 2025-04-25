@@ -28,10 +28,10 @@ const Navigation: React.FC = () => {
             {currentUser
               ? [
                   <Nav.Link id="list-stuff-nav" href="/list-birds" key="list" active={pathName === '/list-birds'}>
-                    List Birds
+                    List Sightings
                   </Nav.Link>,
                   <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
-                    Add Bird
+                    Report Sighting
                   </Nav.Link>,
                 ]
               : ''}
