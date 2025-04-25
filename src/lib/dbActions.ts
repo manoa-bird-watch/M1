@@ -121,7 +121,7 @@ export async function addSighting(
   sighting: {
     id: number;
     imagepath: string;
-    name: string; sciname: string; time: string; userid: number; description: string; },
+    name: string; sciname: string; time: string; userid: number; description: string; owner: string;},
 ) {
   await prisma.sighting.create({
     data: {
@@ -132,6 +132,7 @@ export async function addSighting(
       time: sighting.time,
       userid: sighting.userid,
       description: sighting.description,
+      owner: sighting.owner,
     },
   });
   redirect('/list');
