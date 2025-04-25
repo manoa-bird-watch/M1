@@ -30,8 +30,19 @@
   { "id": 22, "imagepath": "/bird-22.jpg", "name": "Koloa Maoli - Hawaiian Duck", "sciname": "Anas wyvilliana", "description": "Endemic to Hawaiʻi. Brown mottled duck similar in appearance to female mallards. Often found in streams, wetlands, and taro patches; shy and quiet."},
   { "id": 23, "imagepath": "/bird-23.jpg", "name": "Mallard", "sciname": "Anas platyrhynchos", "description": "Introduced from North America. Males have a green head and yellow bill; females are brown with orange bills. Common in ponds and sometimes hybridize with Hawaiian ducks."},
   { "id": 24, "imagepath": "/bird-24.jpg", "name": "Aeʻo - Black-necked Stilt", "sciname": "Himantopus mexicanus knudseni", "description": "Endemic subspecies in Hawaiʻi. Tall, slender wader with long pink legs, black upperparts, and white underparts. Found in shallow wetlands, often seen foraging in groups."}
+  ],
 
-]
+  "defaultSightings": [
+    { "id": 0,
+      "imagepath": "/bird-00.jpg",
+      "name": "Manu Nunu - Rock Pigeon",
+      "sciname": "Columba Livia",
+      "time" : "2025-04-24 05:15:00.743",
+      "userid": 2,
+      "description": "Originally from Europe and North Africa. Gray-blue with iridescent neck feathers. Often seen in flocks on sidewalks and rooftops.",
+      "owner": "john@foo.com"
+    }
+  ]
 
 }
 

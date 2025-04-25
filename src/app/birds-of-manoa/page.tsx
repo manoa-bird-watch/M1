@@ -13,9 +13,7 @@ export default async function BirdsOfManoaPage() {
         <div className="row">
           { /* maps over the birds array and creates a card for each bird */ }
           {birds.map((bird) => {
-            const imgSrc = bird.imagepath && (bird.imagepath.endsWith('.jpg') || bird.imagepath.endsWith('.png'))
-              ? bird.imagepath
-              : bird.imagepath; // default fallback
+            const imgSrc = bird.imagepath ?? '/bird-00.jpg'; // default fallback
             return (
               <div key={bird.id} className="col-md-4 mb-4">
                 <div className="card h-100">

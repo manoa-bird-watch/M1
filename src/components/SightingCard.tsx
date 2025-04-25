@@ -4,7 +4,7 @@ import { Card, Image } from 'react-bootstrap';
 import Link from 'next/link';
 import { Sighting } from '@prisma/client';
 
-/* Renders a single Contact. See list/page.tsx. */
+/* Renders a single Sighting. See list-birds/page.tsx. */
 const SightingCard = ({ sighting }: { sighting: Sighting }) => (
   <Card className="h-100">
     <Card.Header>
@@ -12,7 +12,7 @@ const SightingCard = ({ sighting }: { sighting: Sighting }) => (
       <Card.Title>
         {sighting.name}
       </Card.Title>
-      <Card.Subtitle>{sighting.sciname}</Card.Subtitle>
+      <Card.Subtitle>{sighting.time}</Card.Subtitle>
     </Card.Header>
     <Card.Body>
       <Card.Text>{sighting.description}</Card.Text>
