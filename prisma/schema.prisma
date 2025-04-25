@@ -46,7 +46,7 @@ model Stuff {
 
 model Bird {
   id            Int       @id @default(autoincrement())
-  imagepath     String?
+  imagepath     String
   name          String
   sciname       String
   description   String
@@ -54,7 +54,7 @@ model Bird {
 
 model Sighting {
   id            Int       @id @default(autoincrement())
-  imagepath     String?
+  imagepath     String
   name          String
   sciname       String
   time          String
