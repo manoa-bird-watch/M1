@@ -1,22 +1,29 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
-import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Form, Row, Image } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import swal from 'sweetalert';
 import { redirect } from 'next/navigation';
+import { useState } from 'react';
 // eslint-disable-next-line import/extensions
 import { addSighting } from '@/lib/dbActions';
 // eslint-disable-next-line import/extensions
 import LoadingSpinner from '@/components/LoadingSpinner';
 // eslint-disable-next-line import/extensions
 import { AddSightingSchema } from '@/lib/validationSchemas';
-import { useState } from 'react';
 import birdData from '../../config/settings.development.json';
 
 const onSubmit = async (
-  data: { imagepath: string; name: string; sciname: string; time: string; userid: number; description: string },
+  data: {
+    imagepath: string;
+    name: string;
+    sciname: string;
+    time: string;
+    userid: number;
+    description: string;
+    owner: string; },
 ) => {
   await addSighting(data);
   swal('Success', 'Your sighting has been added', 'success', {
@@ -75,7 +82,6 @@ const ReportDefaultSighting: React.FC = () => {
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit(onSubmit)}>
-
                 <Form.Group className="mb-3">
                   <Form.Label>What did you see?</Form.Label>
                   <select
@@ -96,7 +102,7 @@ const ReportDefaultSighting: React.FC = () => {
                     <Form.Group className="mb-3">
                       <Form.Label>Selected Bird</Form.Label>
                       <div className="d-flex pt-3 pb-3 flex-column align-items-center">
-                        <img
+                        <Image
                           src={selectedBird.imagepath}
                           alt={selectedBird.name}
                           style={{ width: '80%', height: '80%', marginRight: '10px' }}
@@ -105,11 +111,11 @@ const ReportDefaultSighting: React.FC = () => {
                         <em className="text-muted">{selectedBird.sciname}</em>
                       </div>
                     </Form.Group>
-
                     <input type="hidden" {...register('name')} value={selectedBird.name} />
                     <input type="hidden" {...register('sciname')} value={selectedBird.sciname} />
                     <input type="hidden" {...register('imagepath')} value={selectedBird.imagepath} />
                     <input type="hidden" {...register('description')} value={selectedBird.description} />
+                    <input type="hidden" {...register('owner')} value={currentUser} />
                   </>
                 )}
 

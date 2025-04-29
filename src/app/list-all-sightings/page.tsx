@@ -1,9 +1,11 @@
 // import { getServerSession } from 'next-auth';
-import { Col, Container, Row } from 'react-bootstrap';
-import { prisma } from '@/lib/prisma';
 // import authOptions from '@/lib/authOptions';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Sighting } from '@prisma/client';
+// eslint-disable-next-line import/extensions
 import SightingCard from '@/components/SightingCard';
+// eslint-disable-next-line import/extensions
+import { prisma } from '@/lib/prisma';
 
 const ListAllSightings = async () => {
   // const session = await getServerSession(authOptions);
@@ -22,11 +24,11 @@ const ListAllSightings = async () => {
               <h1 className="text-center">All Sightings</h1>
               <Row xs={1} md={2} lg={3} className="g-4">
                 {sightings.map((sighting) => (
-                  <Col key={sighting.id}>
+                  <Col>
                     <SightingCard sighting={sighting} />
                     { /* also includes who made the sighting */}
                     <div className="mt-2 text-center small text-muted">
-                      Submitted by: {sighting.owner}
+                      {`Submitted by: ${sighting.owner}`}
                     </div>
                   </Col>
                 ))}
