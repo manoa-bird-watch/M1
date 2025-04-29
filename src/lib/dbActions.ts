@@ -46,7 +46,7 @@ export async function editStuff(stuff: Stuff) {
       condition: stuff.condition,
     },
   });
-  // After updating, redirect to the list page
+  // After editing, redirect to the list page
   redirect('/list');
 }
 
@@ -79,7 +79,8 @@ export async function addBird(
       description: bird.description,
     },
   });
-  redirect('/list');
+  // After adding, redirect to the all birds page
+  redirect('/birds-of-manoa');
 }
 
 /**
@@ -97,7 +98,8 @@ export async function editBird(bird: Bird) {
       description: bird.description,
     },
   });
-  redirect('/list');
+  // After editing, redirect to the all birds page
+  redirect('/birds-of-manoa');
 }
 
 /**
@@ -109,8 +111,8 @@ export async function deleteBird(id: number) {
   await prisma.bird.delete({
     where: { id },
   });
-  // After deleting, redirect to the list page
-  redirect('/list');
+  // After deleting, redirect to the all birds page
+  redirect('/birds-of-manoa');
 }
 
 /**
@@ -133,7 +135,8 @@ export async function addSighting(
       owner: sighting.owner,
     },
   });
-  redirect('/list');
+  // After adding, redirect to the your sightings page
+  redirect('/list-birds');
 }
 
 /**
@@ -153,7 +156,8 @@ export async function editSighting(sighting: Sighting) {
       owner: sighting.owner,
     },
   });
-  redirect('/list');
+  // After editing, redirect to the your sightings page
+  redirect('/list-birds');
 }
 
 /**
@@ -165,8 +169,8 @@ export async function deleteSighting(id: number) {
   await prisma.sighting.delete({
     where: { id },
   });
-  // After deleting, redirect to the list page
-  redirect('/list');
+  // After deleting, redirect to the your sightings page
+  redirect('/list-birds');
 }
 
 /**
