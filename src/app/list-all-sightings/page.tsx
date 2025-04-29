@@ -1,5 +1,5 @@
-// import { getServerSession } from 'next-auth';
-// import authOptions from '@/lib/authOptions';
+import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/authOptions';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Sighting } from '@prisma/client';
 // eslint-disable-next-line import/extensions
@@ -8,8 +8,7 @@ import SightingCard from '@/components/SightingCard';
 import { prisma } from '@/lib/prisma';
 
 const ListAllSightings = async () => {
-  // const session = await getServerSession(authOptions);
-  // const currentUserEmail = session?.user?.email ?? '';
+  const session = await getServerSession(authOptions);
   // doesn't protect the page for only logged in users
 
   // Get all sightings regardless of user
@@ -25,7 +24,7 @@ const ListAllSightings = async () => {
               <Row xs={1} md={2} lg={3} className="g-4">
                 {sightings.map((sighting) => (
                   <Col>
-                    <SightingCard sighting={sighting} />
+                    <SightingCard sighting={sighting} currentUserEmail={session?.user?.email ?? null}/>
                     { /* also includes who made the sighting */}
                     <div className="mt-2 text-center small text-muted">
                       {`Submitted by: ${sighting.owner}`}
