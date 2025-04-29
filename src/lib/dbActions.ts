@@ -115,22 +115,23 @@ export async function deleteBird(id: number) {
 
 /**
  * Adds a new Sighting to the database.
- * @param bird, an object with the following properties: name, sciname, time, user, description
+ * @param sighting, has the following properties: id, imagepath, name, sciname, time, user, description, owner
  */
 export async function addSighting(
   sighting: {
+    id: number;
     imagepath: string;
-    name: string; sciname: string; time: string; userid: number; description: string; owner: string; },
+    name: string; sciname: string; time: string; userid: number; description: string; },
 ) {
   await prisma.sighting.create({
     data: {
+      id: sighting.id,
       imagepath: sighting.imagepath,
       name: sighting.name,
       sciname: sighting.sciname,
       time: sighting.time,
       userid: sighting.userid,
       description: sighting.description,
-      owner: sighting.owner,
     },
   });
   redirect('/list');
@@ -138,7 +139,7 @@ export async function addSighting(
 
 /**
  * Edits an existing Sighting in the database.
- * @param sighting, an object with the following properties: name, sciname, time, user, description
+ * @param sighting, has the following properties: id, imagepath, name, sciname, time, user, description, owner
  */
 export async function editSighting(sighting: Sighting) {
   await prisma.sighting.update({
@@ -151,6 +152,7 @@ export async function editSighting(sighting: Sighting) {
       time: sighting.time,
       userid: sighting.userid,
       description: sighting.description,
+      owner: sighting.owner,
     },
   });
   redirect('/list');
