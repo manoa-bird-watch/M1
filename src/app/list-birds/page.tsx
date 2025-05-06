@@ -1,4 +1,14 @@
-import { getServerSession } from 'next-auth';
+import { getServerSession, Session, User } from 'next-auth';
+
+declare module 'next-auth' {
+  interface User {
+    role?: string | null;
+  }
+
+  interface Session {
+    user: User;
+  }
+}
 import { Col, Container, Row } from 'react-bootstrap';
 import { prisma } from '@/lib/prisma';
 // import StuffItem from '@/components/StuffItem';
@@ -13,7 +23,7 @@ const ListBirds = async () => {
   const session = await getServerSession(authOptions);
   loggedInProtectedPage(
     session as {
-      user: { email: string; id: string; randomKey: string };
+      user: { email: string; id: string; randomKey: string; role?: string | null };
       // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
@@ -29,11 +39,11 @@ const ListBirds = async () => {
         <Container>
           <Row>
             <Col>
-              <h1 className="text-center">All Sightings</h1>
+              <h1 className="text-center">Your Sightings</h1>
               <Row xs={1} md={2} lg={3} className="g-4">
                 {sightings.map((sighting) => (
                   <Col key={sighting.id}>
-                    <SightingCard sighting={sighting} />
+                    <SightingCard sighting={sighting} currentUserEmail={session?.user?.email ?? null} currentUserRole={session?.user?.role ?? null}/>
                     { /* also includes who made the sighting */}
                     <div className="mt-2 text-center small text-muted">
                       {`Submitted by: ${sighting.owner}`}
