@@ -20,7 +20,7 @@ const SightingCard = ({
   return (
     <Card className="h-100">
       <Card.Header>
-        <Image src={sighting.imagepath ?? 'public/bird-00.jpg'} alt={sighting.name} width={75} />
+        <Image src={sighting.imagepath ?? '/bird-00.jpg'} alt={sighting.name} width={75} />
         <Card.Title>{sighting.name}</Card.Title>
         <Card.Subtitle>{sighting.time}</Card.Subtitle>
         <Card.Subtitle className="mt-1">{sighting.location || 'Unknown location'}</Card.Subtitle>

@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/authOptions';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import ReportSighting from '@/components/ReportDefaultSighting';
+import ReportDefaultSighting from '@/components/ReportDefaultSighting';
 
 const ReportSightingPage = async () => {
   // Protect the page, only logged in users can access it.
@@ -13,7 +13,7 @@ const ReportSightingPage = async () => {
   );
   return (
     <main>
-      <ReportSighting />
+      <ReportDefaultSighting />
     </main>
   );
 };

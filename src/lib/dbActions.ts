@@ -124,6 +124,7 @@ export async function addSighting(
     imagepath: string;
     name: string; sciname: string; time: string; userid: number; description: string; owner: string; },
 ) {
+  console.log('Adding sighting');
   await prisma.sighting.create({
     data: {
       imagepath: sighting.imagepath,
