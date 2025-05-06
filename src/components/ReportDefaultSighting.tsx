@@ -23,8 +23,10 @@ const onSubmit = async (
     time: string;
     userid: number;
     description: string;
+    location: string;
     owner: string; },
 ) => {
+  console.log('Form submitted:', data);
   await addSighting(data);
   swal('Success', 'Your sighting has been added', 'success', {
     timer: 2000,
@@ -48,6 +50,8 @@ const ReportDefaultSighting: React.FC = () => {
     resolver: yupResolver(AddSightingSchema),
   });
 
+  console.log('Validation errors:', errors);
+
   if (status === 'loading') {
     return <LoadingSpinner />;
   }
@@ -62,7 +66,7 @@ const ReportDefaultSighting: React.FC = () => {
     }
     const bird = birdData.defaultData.find((thisbird) => thisbird.name === event.target.value);
     if (bird) {
-      console.log('Selected bird:', bird.name);
+      console.log('Selected bird:', bird.imagepath);
       setValue('name', bird.name);
       setValue('sciname', bird.sciname);
       setValue('imagepath', bird.imagepath);
@@ -146,7 +150,11 @@ const ReportDefaultSighting: React.FC = () => {
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>
-                      <Button type="submit" variant="primary">
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="float-right"
+                      >
                         Submit
                       </Button>
                     </Col>
