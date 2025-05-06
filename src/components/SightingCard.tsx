@@ -13,6 +13,7 @@ const SightingCard = ({ sighting }: { sighting: Sighting }) => (
         {sighting.name}
       </Card.Title>
       <Card.Subtitle>{sighting.time}</Card.Subtitle>
+      <Card.Subtitle className="mt-1">{sighting.location || 'Unknown location'}</Card.Subtitle>
     </Card.Header>
     <Card.Body>
       <Card.Text>{sighting.description}</Card.Text>

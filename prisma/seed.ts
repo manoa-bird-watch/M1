@@ -47,6 +47,7 @@ async function main() {
         name: sighting.name,
         sciname: sighting.sciname,
         time: sighting.time,
+        location: sighting.location,
         userid: sighting.userid,
         description: sighting.description,
         owner: sighting.owner,

@@ -119,14 +119,26 @@ const ReportDefaultSighting: React.FC = () => {
                   </>
                 )}
 
-                <Form.Group>
+                <Form.Group className="mb-3">
                   <Form.Label>At what time?</Form.Label>
                   <input
                     type="text"
                     {...register('time')}
                     className={`form-control ${errors.time ? 'is-invalid' : ''}`}
+                    placeholder="Enter time"
                   />
                   <div className="invalid-feedback">{errors.time?.message}</div>
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Label>Where did you see this bird?</Form.Label>
+                  <input
+                    type="text"
+                    {...register('location')}
+                    className={`form-control ${errors.location ? 'is-invalid' : ''}`}
+                    placeholder="Enter location"
+                  />
+                  <div className="invalid-feedback">{errors.location?.message}</div>
                 </Form.Group>
 
                 <input type="hidden" {...register('owner')} value={currentUser} />
