@@ -23,6 +23,7 @@ const SightingCard = ({
         <Image src={sighting.imagepath ?? '/bird-00.jpg'} alt={sighting.name} width={75} />
         <Card.Title>{sighting.name}</Card.Title>
         <Card.Subtitle>{sighting.time}</Card.Subtitle>
+        <Card.Subtitle className="mt-1">{sighting.location || 'Unknown location'}</Card.Subtitle>
       </Card.Header>
       <Card.Body>
         <Card.Text>{sighting.description}</Card.Text>

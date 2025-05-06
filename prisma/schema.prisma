@@ -61,7 +61,8 @@ model Sighting {
   time          String
   userid        Int
   description   String
-  owner         String  
+  location      String?
+  owner         String
 }
 
 model Comment {
