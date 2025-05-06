@@ -37,6 +37,7 @@ const ReportDefaultSighting: React.FC = () => {
     name: string; sciname: string; imagepath: string; description: string } | null>(null);
   // console.log('AddStuffForm', status, session);
   const currentUser = session?.user?.email || '';
+  const currentUserId = session?.user?.id || 0;
   const {
     register,
     handleSubmit,
@@ -64,7 +65,7 @@ const ReportDefaultSighting: React.FC = () => {
       console.log('Selected bird:', bird.name);
       setValue('name', bird.name);
       setValue('sciname', bird.sciname);
-      setValue('imagepath', `/public/${bird.imagepath}`);
+      setValue('imagepath', bird.imagepath);
       setValue('description', bird.description);
       setSelectedBird(bird);
     } else {
@@ -111,11 +112,10 @@ const ReportDefaultSighting: React.FC = () => {
                         <em className="text-muted">{selectedBird.sciname}</em>
                       </div>
                     </Form.Group>
-                    <input type="hidden" {...register('name')} value={selectedBird.name} />
-                    <input type="hidden" {...register('sciname')} value={selectedBird.sciname} />
-                    <input type="hidden" {...register('imagepath')} value={selectedBird.imagepath} />
-                    <input type="hidden" {...register('description')} value={selectedBird.description} />
-                    <input type="hidden" {...register('owner')} value={currentUser} />
+                    <input type="hidden" {...register('name')} />
+                    <input type="hidden" {...register('sciname')} />
+                    <input type="hidden" {...register('imagepath')} />
+                    <input type="hidden" {...register('description')} />
                   </>
                 )}
 
@@ -130,6 +130,7 @@ const ReportDefaultSighting: React.FC = () => {
                 </Form.Group>
 
                 <input type="hidden" {...register('owner')} value={currentUser} />
+                <input type="hidden" {...register('userid')} value={currentUserId} />
                 <Form.Group className="form-group">
                   <Row className="pt-3">
                     <Col>

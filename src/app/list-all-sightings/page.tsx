@@ -24,7 +24,11 @@ const ListAllSightings = async () => {
               <Row xs={1} md={2} lg={3} className="g-4">
                 {sightings.map((sighting) => (
                   <Col>
-                    <SightingCard sighting={sighting} currentUserEmail={session?.user?.email ?? null} currentUserRole={session?.user?.role ?? null}/>
+                    <SightingCard
+                      sighting={sighting}
+                      currentUserEmail={session?.user?.email ?? null}
+                      currentUserRole={session?.user?.role ?? null}
+                    />
                     { /* also includes who made the sighting */}
                     <div className="mt-2 text-center small text-muted">
                       {`Submitted by: ${sighting.owner}`}

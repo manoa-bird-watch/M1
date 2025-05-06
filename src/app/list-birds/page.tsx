@@ -1,4 +1,12 @@
-import { getServerSession, Session, User } from 'next-auth';
+import { getServerSession } from 'next-auth';
+
+import { Col, Container, Row } from 'react-bootstrap';
+import { prisma } from '@/lib/prisma';
+// import StuffItem from '@/components/StuffItem';
+import { loggedInProtectedPage } from '@/lib/page-protection';
+import authOptions from '@/lib/authOptions';
+import { Sighting } from '@prisma/client';
+import SightingCard from '@/components/SightingCard';
 
 declare module 'next-auth' {
   interface User {
@@ -9,13 +17,6 @@ declare module 'next-auth' {
     user: User;
   }
 }
-import { Col, Container, Row } from 'react-bootstrap';
-import { prisma } from '@/lib/prisma';
-// import StuffItem from '@/components/StuffItem';
-import { loggedInProtectedPage } from '@/lib/page-protection';
-import authOptions from '@/lib/authOptions';
-import { Sighting } from '@prisma/client';
-import SightingCard from '@/components/SightingCard';
 
 /** Render a list of stuff for the logged in user. */
 const ListBirds = async () => {
@@ -43,7 +44,11 @@ const ListBirds = async () => {
               <Row xs={1} md={2} lg={3} className="g-4">
                 {sightings.map((sighting) => (
                   <Col key={sighting.id}>
-                    <SightingCard sighting={sighting} currentUserEmail={session?.user?.email ?? null} currentUserRole={session?.user?.role ?? null}/>
+                    <SightingCard
+                      sighting={sighting}
+                      currentUserEmail={session?.user?.email ?? null}
+                      currentUserRole={session?.user?.role ?? null}
+                    />
                     { /* also includes who made the sighting */}
                     <div className="mt-2 text-center small text-muted">
                       {`Submitted by: ${sighting.owner}`}
