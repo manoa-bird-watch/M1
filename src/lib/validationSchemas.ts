@@ -37,7 +37,7 @@ export const EditBirdSchema = Yup.object({
 });
 
 export const AddSightingSchema = Yup.object({
-  imagepath: Yup.string().url().required(),
+  imagepath: Yup.string().required(),
   name: Yup.string().required(),
   sciname: Yup.string().required(),
   time: Yup.string().required(),
