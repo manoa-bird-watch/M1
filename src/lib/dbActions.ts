@@ -132,6 +132,7 @@ export async function addSighting(
       time: sighting.time,
       userid: sighting.userid,
       description: sighting.description,
+      location: sighting.location,
       owner: sighting.owner,
     },
   });
@@ -153,6 +154,7 @@ export async function editSighting(sighting: Sighting) {
       time: sighting.time,
       userid: sighting.userid,
       description: sighting.description,
+      location: sighting.location,
       owner: sighting.owner,
     },
   });
