@@ -117,7 +117,7 @@ export async function deleteBird(id: number) {
 
 /**
  * Adds a new Sighting to the database.
- * @param sighting, has the following properties: id, imagepath, name, sciname, time, user, description, owner
+ * @param sighting, has the following properties: imagepath, name, sciname, time, user, description, owner
  */
 export async function addSighting(
   sighting: {
