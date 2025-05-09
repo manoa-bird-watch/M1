@@ -122,7 +122,14 @@ export async function deleteBird(id: number) {
 export async function addSighting(
   sighting: {
     imagepath: string;
-    name: string; sciname: string; time: string; userid: number; description: string; owner: string; },
+    name: string;
+    sciname: string;
+    time: string;
+    userid: number;
+    description: string;
+    owner: string;
+    location: string;
+  },
 ) {
   console.log('Adding sighting');
   await prisma.sighting.create({
